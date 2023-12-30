@@ -47,10 +47,7 @@ class ApiController extends Controller
 
     public function login(Request $request)
     {
-        // $request->validate([
-        //     'email' => 'required|string|email',
-        //     'password' => 'required|string',
-        // ]);
+        
         $validate = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',
@@ -66,10 +63,7 @@ class ApiController extends Controller
 
         $user = Auth::user();
         $user['token'] = $user->createToken('authToken')->accessToken;
-        // $token = $user->createToken('assignment')->accessToken;
-        // dd($user);
-        // user
-        // return response()->json(['token' => $token], 200);
+       
         return response()->json(['data' => $user], 200);
         
     }
